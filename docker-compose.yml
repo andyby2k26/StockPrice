@@ -12,3 +12,13 @@ services:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
+  
+  python-api:
+    container_name: python-api
+    build:
+      context: ./stockprice
+      dockerfile: dockerfile
+    volumes:
+      - ./stockprice:/app
+
+

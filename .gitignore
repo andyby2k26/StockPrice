@@ -1,5 +1,4 @@
 .*
 !.gitignore
 postgres/data
-stockprice/config.ini
 */__pycache__

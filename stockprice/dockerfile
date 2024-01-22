@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:alpine
+FROM python:latest
 
 # Set the working directory in the container
 WORKDIR /app
@@ -10,5 +10,8 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-# Run reddit_producer.py when the container launches
+#Create a cron schedule to run the script every 15 minutes
+#RUN echo "*/15 * * * * /usr/local/bin/python /app/stockprice.py >> /var/log/cron.log 2>&1" > /etc/crontabs/root
+
+# Run the cron daemon in the foreground
 CMD ["python", "stockprice.py"]
